@@ -1,2 +1,4 @@
 name: Dongie Agnir's Personal Blog
 pygments: true
+
+baseurl: /blog
