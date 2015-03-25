@@ -8,7 +8,7 @@ title: Dongies Personal Blog
     <ul class="posts">
         {% for post in site.posts %}
             {% unless post.draft %}
-                <li><a href="{{ post.url }}">{{ post.title }}</a><span> {{ post.date | date_to_string }}</span></li>
+            <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a><span> {{ post.date | date_to_string }}</span></li>
             {% endunless %}
         {% endfor %}
     </ul>

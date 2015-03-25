@@ -9,7 +9,7 @@ Kanye West recenty release his 6th studio album, titled "Yeezus".  And yes, it's
 supposed to sound like "Jesus."  At one point in time, the album cover was a
 melted Jesus piece:
 
-![melted Jesus piece](/images/yeezus.jpeg)
+![melted Jesus piece]({{ site.baseurl }}/images/yeezus.jpeg)
 
 To my disappointment, that was later changed for an unannounced reason.
 
