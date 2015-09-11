@@ -3,7 +3,13 @@ layout: post
 title:  "RVM and non-standard include and lib directories"
 date:   2015-09-10
 ---
-This quick post is about installing rubies with [RVM](https://rvm.io) if the build dependencies aren't installed in the usual places (`/usr/local/[include,lib]`).  In my particular case, I use [pkgsrc](https://www.pkgsrc.org/) in unprivileged mode for package management, so anything I "install" gets put under `$HOME/pkg/`.  When installing a ruby with `rvm install`, we just need to add the `-C` flag which allows to specify options that `rvm` will forward to the `configure` script that is run before compiling the ruby and the default gems.  The two options we want to pass `--with-opt-include` and `--with-opt-lib`, which obviously are the directories we want the compiler to (also) look in for headers and library files.  Here's a sample command:
+This quick post is about installing rubies with [RVM](https://rvm.io) if the build dependencies aren't installed in the usual places (`/usr/local/[include,lib]`).  In my particular case, I use [pkgsrc](https://www.pkgsrc.org/) in unprivileged mode for package management, so anything I "install" gets put under `$HOME/pkg/`.  The first thing you need to do if you haven't already is turn off automatic fetching of build dependencies.  Since RVM will only look in the standard locations when checking for existence of build dependencies, it will not find them and attempt to use your system's default package manager (at least for Linux systems) to fetch them.  To do this, just issue the following command:
+
+{% highlight bash %}
+rvm autolibs disable
+{% endhighlight %}
+
+When installing a ruby with `rvm install`, we just need to add the `-C` flag which allows to specify options that `rvm` will forward to the `configure` script that is run before compiling the ruby and the default gems.  The two options we want to pass `--with-opt-include` and `--with-opt-lib`, which obviously are the directories we want the compiler to (also) look in for headers and library files.  Here's a sample command:
 
 {% highlight bash %}
 rvm install 2.2.3 -C --with-opt-include=/home/dagnir/pkg/include,--with-opt-lib=/home/dagnir/pkg/lib
